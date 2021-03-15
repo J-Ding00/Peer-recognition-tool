@@ -1,13 +1,16 @@
 .Awards-Button {
-    
     size: 50%;
 }
 
 .Dropdown-Menu {
-    size: 50%;
+    /* size: 10%; */
     max-height: fit-content;
     margin-left: 89%;
-    margin-bottom: 1%;
-    color: black;
+    position: absolute;
     display: inline-flex;
+    top: 7.5px;
 }
+
+.dropdown-toggle::after { /*hide the arrow for drop down button*/
+    content: none; 
+} 

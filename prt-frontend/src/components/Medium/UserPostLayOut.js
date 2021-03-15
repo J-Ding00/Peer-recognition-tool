@@ -10,6 +10,9 @@ import FlipMove from "react-flip-move";
 import "./UserPostLayOut.css";
 import AwardsButton from "./AwardsButton";
 import profilePic from "./genericProfilePicture.jpeg";
+import DropdownButton from "react-bootstrap/DropdownButton"
+
+
 
 export default class UserPostLayOut extends Component{
     constructor(props){
@@ -23,7 +26,6 @@ export default class UserPostLayOut extends Component{
         };
         console.log(props)
         this.addItem = this.addItem.bind(this);
-
     }
 
     addItem(e){ //enter value will add them into the items array 
@@ -58,11 +60,8 @@ export default class UserPostLayOut extends Component{
                  <strong> {item.recognized}</strong>
                  <AwardsButton></AwardsButton>
             </p>
-            
-           
-           
-             {item.text}</li>
-        
+             {item.text}
+             </li>
     }
 
     poatList(){

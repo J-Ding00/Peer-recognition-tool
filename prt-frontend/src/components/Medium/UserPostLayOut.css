@@ -64,11 +64,18 @@ textarea.recognitionFor{
     border-radius: 50%;
 
 }
+
 p.postHeader{
-    border: 1px solid green;
+    border: 1px solid rgb(0, 128, 0);
     border-radius: 5px;
-    
 }
+
+/* .AwardsButton.award{
+    background-color: #CEE0D7;
+    color: #005857;
+    border: 2px solid #CEE0D7;
+} */
+
 .todoListMain .recognition .post{
     
     height:30px;
@@ -77,10 +84,7 @@ p.postHeader{
     margin-left: 50%;
 
     top: 100px;
-
     transform: translate(-50%, 30%);
-
-
 } 
 
 .postCommentButton{
