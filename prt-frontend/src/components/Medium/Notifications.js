@@ -28,13 +28,13 @@ export default class Notifications extends Component{
     updateNotifications(res) {
       // res.body is [
       //   {
-      //     message: "Jiachen ding was recognized by god",
+      //     message: "a was recognized by god",
       //     arrivalTime: Date.now(),
       //     recognitionID: "23dfvhaosdgaeorghafb"
       //   },
       // ]
 
-      // npm -v
+     
 
 
       // set this.state.newNotifications = length of res.body
@@ -42,8 +42,8 @@ export default class Notifications extends Component{
       //    add a notification to the dropdown
 
       this.setState({
-        newNotifications: res.body.length(),
-        elements: res.body.flatMap((notification) => {
+        newNotifications: res.data.length,
+        elements: res.data.flatMap((notification) => {
           return [
             <Dropdown.Item href="#/mention">{notification.message}<p>{notification.arrivalTime}</p> </Dropdown.Item>,
             <Dropdown.Divider/>
