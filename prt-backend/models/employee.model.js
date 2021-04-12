@@ -1,7 +1,7 @@
-const mongoose = require("mongoose"); //Presentation note: the module we're using to
-                                      //interface with MongoDB database
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const EmployeeSchema = new mongoose.Schema(
+const employeeSchema = new Schema(
     {
         firstName:              String,
         lastName:               String,
@@ -15,10 +15,14 @@ const EmployeeSchema = new mongoose.Schema(
         email:                  String,
         startDate:              String,
         recognitionsGiven:      [mongoose.ObjectId],
-        recognitionsReceived:   [mongoose.ObjectId]
+        recognitionsReceived:   [mongoose.ObjectId],
+        activeNotifications:    [mongoose.ObjectId]
     }, {
-        collection: "Employees" //The collection that a Employee document belongs to
+        collection: "Employees"
     }
-)
+);
 
-module.exports = Employee = mongoose.model("employee", EmployeeSchema, "Employees");
+//mongoose.model(ModelName, schema, ModelCollection)
+const Employee = mongoose.model("Employee", employeeSchema, "Employees");
+
+module.exports = Employee;

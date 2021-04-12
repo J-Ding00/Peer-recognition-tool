@@ -1,12 +1,12 @@
 import React, { Component} from "react";
+import "./CoreValuesButton.css";
 import Button from "react-bootstrap/Button";
-import axios from 'axios';
-import "./CoreValues.css";
-import ReactDOM from 'react-dom';
-import profilePic from "./genericProfilePicture.jpeg";
+import Fade from 'react-reveal/Fade';
+// import 'node_modules/motion-css-animation/main';
+
 
 export default class CoreValues extends Component{
-    constructor(props){ {/* assign initial state */}
+    constructor(props){
         super(props);
         this.state = {
           company: localStorage.getItem('company'),
@@ -18,20 +18,25 @@ export default class CoreValues extends Component{
       var strin = {backgroundColor:"rgb(" + [values.charCodeAt(0)*2,values.charCodeAt(1)*2,values.charCodeAt(2)/122*255].toString() + ")"};
 
       return (
-          <div>
-            <strong><h3 class = "values" style = {strin}>{values} </h3> </strong>
-          </div>
+        <div className = "corevalue">
+        {/* <Fade left> */}
+          <button className = "fade-in" style = {strin}>
+            <strong><center class = "hi">{values} </center> </strong>
+          </button>
+        {/* </Fade > */}
+        </div>
       )
-
     }
   render(){
     return (
-        <div class = "coreValues-panel">
-            <h2 class ="coreTitle">Company Values</h2>
-            <hr class = "line"></hr>
+      
+        <div>
             {this.state.coreValues.map(this.load)}
         </div>
+        
     );
     }
 
 }
+
+

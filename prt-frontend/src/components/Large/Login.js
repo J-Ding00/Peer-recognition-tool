@@ -23,7 +23,6 @@ export default class Login extends Component{
     }
 
     successfulLogin(res){
-
         localStorage.setItem('username', this.state.username); //localstorage username
         localStorage.setItem('fullName', res.data.user.firstName+" "+res.data.user.lastName);  //localstorage fullName
         localStorage.setItem('position', res.data.user.positionTitle);  //localstorage position
@@ -31,6 +30,7 @@ export default class Login extends Component{
         localStorage.setItem('company', res.data.user.companyName);  //localstorage company
         localStorage.setItem('startData', res.data.user.startDate);  //localstorage startDate
         localStorage.setItem('cid',res.data.user.companyId);
+        localStorage.setItem('employeeID', res.data.user.employeeId);
 
         this.props.history.push({
             pathname: 'home',

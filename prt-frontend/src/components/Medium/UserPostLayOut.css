@@ -1,5 +1,5 @@
 
-.todoListMain .recognition button {
+.squre {
     padding: 10 px;
     font-size: 16px;
     /* margin-right: 0px; */
@@ -16,7 +16,7 @@
     border-radius: 20px;
     /* box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2); */
 }
-.todoListMain .recognition button:hover {
+.squre:hover {
     color: #2CD5C4;
     cursor: pointer; 
 }
@@ -52,13 +52,14 @@
     overflow: hidden;
 
     /*DONT CHANGE ANYTHING BELOW!!!!!!!!!!!!!*/
-    -ms-transform: translate(-50%, 50%);
-    transform: translate(-50%, 0%);
+    /* -ms-transform: translate(-50%, 50%);
+    transform: translate(-50%, 0%); */
     position: relative;
     /* width: 100%; */
     /* height: 100%; */
-    left: 60%;
+    /* left: 60%; */
 }
+
 ul.thisList{ /*this is where you change the common window size*/
     position: relative;
     /* width: 750px; */
@@ -78,9 +79,6 @@ textarea{
     display: block;
     width: 100%;
     height: 100px;
-    /* border-color: rgb(255, 245, 210); */
-    /* background-color : #fffaf4;  */
-    /* border: thin solid black; */
     border-collapse: initial;
     
     text-indent: 5px;
@@ -128,7 +126,7 @@ input.recognitionFor{
     height:172px;
     width: 620px;
     resize:none;
-    margin-left: 55%;
+    margin-left: 50%;
     transform: translate(-50%, 5%); 
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
@@ -144,9 +142,10 @@ input.recognitionFor{
 
 .recognition .box{
     margin-top: 10px;
-    height:100px;
+    height:80px;
     width: 600px;
     background-color: rgb(210, 252, 255);
+    /* background-color: rgb(51, 51, 51); */
     border-color: rgb(210, 252, 255);
 }
 
@@ -200,9 +199,13 @@ input.recognitionFor{
     margin-right: 5px;
     /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5); */
 }
-
-.floatright{
-    float: right;
-    
-}
-  
+.visible {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 1s linear;
+  }
+  .hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 1s, opacity 1s linear;
+  }

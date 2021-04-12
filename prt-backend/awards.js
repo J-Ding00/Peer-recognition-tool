@@ -77,7 +77,7 @@ async function getAwards(year, month) {
  *                     type: object
  */
 router.get('/:year/:month', async (req, res) => {
-  if (!req.isAuthenticated) {
+  if (!req.isAuthenticated()) {
     res.status(401).send({ message: 'You are not logged in' })
     return
   }
