@@ -52,8 +52,6 @@ async function fillReceiverValues(user, newRecognition) {
   if ('values' in newRecognition) {
     newRecognition.values = 
       newRecognition.values.filter(v => company.values.includes(v))
-  } else {
-    newRecognition.values = []
   }
 }
 
