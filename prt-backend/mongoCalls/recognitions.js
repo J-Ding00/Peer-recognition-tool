@@ -1,5 +1,6 @@
 const Recognition = require("../models/recognition.model.js");
 const Employee = require("../models/employee.model.js");
+const Company = require("../models/company.model.js");
 
 // Watch out for the capitalization of companyID.
 async function getRecognitionsFromCompany(req, res) {
@@ -9,7 +10,7 @@ async function getRecognitionsFromCompany(req, res) {
 }
 
 async function postRecognition(req, res) {
-  await fillReceiverValues(req.body);
+  await fillReceiverValues(req.user, req.body);
   const newRecognition = new Recognition(req.body);
 
   newRecognition.save()
@@ -17,7 +18,7 @@ async function postRecognition(req, res) {
     .catch(error => res.status(400).send("Error: " + error));
 }
 
-async function fillReceiverValues(newRecognition) {
+async function fillReceiverValues(user, newRecognition) {
   const fullName = newRecognition.receiverName;
   const companyID = newRecognition.companyID;
   const nameTokens = fullName.split(" ");
@@ -42,8 +43,18 @@ async function fillReceiverValues(newRecognition) {
     setPlaceholders(newRecognition);
     return;
   }
+
   newRecognition.receiverID = employee.employeeId; //watch out for capitalization of employeeID
   newRecognition.receiverProfilePicURL = employee.profilePicURL;
+
+  const company = await Company.findOne({ companyId: user.companyId });
+
+  if ('values' in newRecognition) {
+    newRecognition.values = 
+      newRecognition.values.filter(v => company.values.includes(v))
+  } else {
+    newRecognition.values = []
+  }
 }
 
 function setPlaceholders(newRecognition) {
