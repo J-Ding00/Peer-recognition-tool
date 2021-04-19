@@ -64,9 +64,6 @@ router.post('/', async (req, res) => {
         return
     }
     
-    // Expected format:
-    // { "value": "Text" }
-    
     if (!('value' in req.body)) {
         res.status(422).send({ message: 'Use format {"value": "Value text"}' })
         return
@@ -75,8 +72,6 @@ router.post('/', async (req, res) => {
     const companyID = req.user.companyId;
     const company = await Company.findOne({ companyId: companyID });
 
-    // TODO: Add newValue to "values" field of current employee (req.user)'s
-    // company
     const newValue = req.body.value;
     await company.values.push(newValue);
     await company.save();

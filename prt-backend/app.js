@@ -26,7 +26,7 @@ const Rockstars = require('./routes/rockstars.js')
 app.use(session({ secret: 'compsci320', maxAge: sessionLength }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
+app.use(cors({ credentials: true, origin: 'http://localhost:5000' }));
 app.use(bodyParser.json());
 app.use("/profile-pics", express.static(testFilesystemURI));
 app.options('*', cors());
@@ -134,7 +134,6 @@ app.post("/postRec", (req, res) => {
 app.use('/notifications', require('./routes/notifications'));
 app.use('/core-values', require('./routes/core-values'));
 app.use('/rockstars', require('./routes/rockstars.js'));
-app.use('/values', require('./routes/coreValues'));
 
 const monthlyAwardsSchedule = new scheduler.RecurrenceRule();
 monthlyAwardsSchedule.second = 0;
