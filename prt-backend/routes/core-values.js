@@ -76,7 +76,7 @@ router.post('/', async (req, res) => {
     await company.values.push(newValue);
     await company.save();
     
-    res.status(201).send({ values: company.values })
+    res.status(201).json(company.values)
 })
 
 module.exports = router;
