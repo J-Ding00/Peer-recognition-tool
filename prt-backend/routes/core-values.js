@@ -1,26 +1,6 @@
 const router = require("express").Router();
 const Company = require("../models/company.model.js");
 
-router.get("/", async (req, res) => {
-    if (!req.isAuthenticated()) {
-        res.status(401).json({ message: "You are not logged in" });
-        return
-    }
-
-    const companyID = req.user.companyId;
-    const company = await Company.findOne({ companyId: companyID });
-    //Watch out for the differences in capitalization of companyID between server and database
-    res.status(200).json(
-        company.values
-    );
-});
-
-
-// const express = require('express')
-// const mongoose = require('mongoose')
-
-// const router = express.Router()
-
 /**
  * @openapi
  * /values:
@@ -36,15 +16,19 @@ router.get("/", async (req, res) => {
  *               items:
  *                 type: string
  */
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
     if (!req.isAuthenticated()) {
-        res.status(401).send({ message: 'You are not logged in' })
+        res.status(401).json({ message: "You are not logged in" });
         return
     }
-    
-    // TODO: Get company for req.user, return "values" list
-    res.status(200).send({ values: ['WIP'] })
-})
+
+    const companyID = req.user.companyId;
+    const company = await Company.findOne({ companyId: companyID });
+    //Watch out for the differences in capitalization of companyID between server and database
+    res.status(200).json(
+        company.values
+    );
+});
 
 /**
  * @openapi
@@ -88,16 +72,16 @@ router.post('/', async (req, res) => {
         return
     }
     
+    const companyID = req.user.companyId;
+    const company = await Company.findOne({ companyId: companyID });
+
     // TODO: Add newValue to "values" field of current employee (req.user)'s
     // company
     const newValue = req.body.value;
+    await company.values.push(newValue);
+    await company.save();
     
-    // TODO: Using the same company object as above, get the actual list of
-    // updated values
-    const updatedValuesList = [newValue];
-    res.status(201).send({ values: updatedValuesList })
+    res.status(201).send({ values: company.values })
 })
 
 module.exports = router;
-
-// module.exports = router;
