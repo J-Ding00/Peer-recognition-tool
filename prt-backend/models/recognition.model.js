@@ -11,7 +11,15 @@ const recognitionSchema = new Schema(
         values:                 [String],
         message:                String,
         creationTime:           Date,
-        receiverProfilePicURL:  String
+        receiverProfilePicURL:  String,
+
+        comments: [{
+          message:      String,
+          giverName:    String,
+          creationDate: Date,
+          employeeId:   Number,
+          likes:        [Number] //Array of the employeeIds of people who liked it
+        }]
     }, {
         collection: "Recognitions"
     }
